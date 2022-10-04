@@ -20,7 +20,15 @@ function addR() {
 
 // Add a column
 function addC() { 
-
+    let row = document.querySelectorAll('tr');
+    for(let i = 0; i < numRows; i++){
+        let newCell = document.createElement('td');
+        newCell.setAttribute('y', `${i}`);
+        newCell.setAttribute('x', `${numCols + 1}`);
+        let row = document.getElementById(`row ${i}`);
+        row.appendChild(newCell);
+    }
+    numCols++;
 }
 
 // Remove a row
