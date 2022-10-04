@@ -33,7 +33,13 @@ function addC() {
 
 // Remove a row
 function removeR() {
-
+    let table = document.querySelector('table');
+    let bottomRow = table.lastElementChild;
+    table.removeChild(bottomRow);
+    numRows--;
+    if(numRows === 0){
+        numCols = 0;
+    }
 }
 
 // Remove a column
