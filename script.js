@@ -20,37 +20,17 @@ function addR() {
 
 // Add a column
 function addC() { 
-    let row = document.querySelectorAll('tr');
-    for(let i = 0; i < numRows; i++){
-        let newCell = document.createElement('td');
-        newCell.setAttribute('y', `${i}`);
-        newCell.setAttribute('x', `${numCols + 1}`);
-        let row = document.getElementById(`row ${i}`);
-        row.appendChild(newCell);
-    }
-    numCols++;
+
 }
 
 // Remove a row
 function removeR() {
-    let table = document.querySelector('table');
-    let bottomRow = table.lastElementChild;
-    table.removeChild(bottomRow);
-    numRows--;
-    if(numRows === 0){
-        numCols = 0;
-    }
+
 }
 
 // Remove a column
 function removeC() {
-    let rows = document.querySelectorAll('tr');
-    for(let i = 0; i < numRows; i++){
-        let row = rows[i];
-        let lastCol = row.lastElementChild;
-        row.removeChild(lastCol);
-    }
-    numCols--;
+
 }
 
 // Set global variable for selected color
