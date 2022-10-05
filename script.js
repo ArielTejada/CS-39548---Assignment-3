@@ -37,7 +37,7 @@ function addC() {
         row.appendChild(newCell);
     }
     numCols++;
-    
+
     console.log(`numRows: ${numRows}`);
     console.log(`numCols ${numCols}`);
 }
@@ -66,6 +66,10 @@ function removeC() {
     numCols--;
     if(numCols === 0){
         numRows = 0;
+        let table = document.querySelector('table');
+        while (table.firstChild) {
+            table.removeChild(table.firstChild);
+        }
     }
     console.log(`numRows: ${numRows}`);
     console.log(`numCols ${numCols}`);
