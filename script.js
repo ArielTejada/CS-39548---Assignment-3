@@ -9,21 +9,23 @@ function addR() {
         numCols = 1;
     }
     let newRow = document.createElement('tr');
-    let newCell = document.createElement('td');
     newRow.setAttribute('id', `row ${numRows}`);
     for(let i = 0; i < numCols; i++){
         let newCell = document.createElement('td');
-        // newCell.setAttribute('y', `${numRows}`);
-        // newCell.setAttribute('x', `${i}`);
         newCell.setAttribute('cell', `${i}${numRows}`);
         newCell.setAttribute('colored', 'false');
+        newCell.className = 'cell';
+        newCell.onclick = function(){
+            this.style.backgroundColor = colorSelected;
+            this.setAttribute('colored', 'true');
+        } 
         newRow.appendChild(newCell);
     }
     document.querySelector('table').appendChild(newRow); 
     numRows++;
     
     console.log(`numRows: ${numRows}`);
-    console.log(`numCols ${numCols}`);
+    console.log(`numCols: ${numCols}`);
 }
 
 // Add a column
@@ -31,17 +33,20 @@ function addC() {
     let rows = document.querySelectorAll('tr');
     for(let i = 0; i < numRows; i++){
         let newCell = document.createElement('td');
-        // newCell.setAttribute('y', `${i}`);
-        // newCell.setAttribute('x', `${numCols}`);
         newCell.setAttribute('cell', `${numCols}${i}`);
         newCell.setAttribute('colored', 'false');
+        newCell.className = 'cell';
+        newCell.onclick = function(){
+            this.style.backgroundColor = colorSelected;
+            this.setAttribute('colored', 'true');
+        } 
         let row = rows[i];
         row.appendChild(newCell);
     }
     numCols++;
 
     console.log(`numRows: ${numRows}`);
-    console.log(`numCols ${numCols}`);
+    console.log(`numCols: ${numCols}`);
 }
 
 // Remove a row
@@ -90,7 +95,6 @@ function fillU(){
             let cell = document.querySelector(`[cell = "${j}${i}"]`);
             let colored = cell.getAttribute('colored');
             if(colored === 'true'){
-                console.log(colored);
                 continue;
             }
             cell.style.backgroundColor = colorSelected;
@@ -120,3 +124,4 @@ function clearAll(){
         }
     }
 }
+
