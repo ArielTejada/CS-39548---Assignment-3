@@ -1,5 +1,5 @@
-# grid-maker-starter-code
-Starter code for Assignment 3 - Grid Maker.
+# grid-maker
+Assignment 3 - Grid Maker.
 
 Team: Ariel Tejada - ArielTejada (Github Username)
 
