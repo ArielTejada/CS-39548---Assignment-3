@@ -13,8 +13,9 @@ function addR() {
     newRow.setAttribute('id', `row ${numRows}`);
     for(let i = 0; i < numCols; i++){
         let newCell = document.createElement('td');
-        newCell.setAttribute('y', `${numRows}`);
-        newCell.setAttribute('x', `${i}`);
+        // newCell.setAttribute('y', `${numRows}`);
+        // newCell.setAttribute('x', `${i}`);
+        newCell.setAttribute('cell', `${i}${numRows}`);
         newCell.setAttribute('colored', false);
         newRow.appendChild(newCell);
     }
@@ -30,8 +31,9 @@ function addC() {
     let rows = document.querySelectorAll('tr');
     for(let i = 0; i < numRows; i++){
         let newCell = document.createElement('td');
-        newCell.setAttribute('y', `${i}`);
-        newCell.setAttribute('x', `${numCols}`);
+        // newCell.setAttribute('y', `${i}`);
+        // newCell.setAttribute('x', `${numCols}`);
+        newCell.setAttribute('cell', `${numCols}${i}`);
         newCell.setAttribute('colored', false);
         let row = rows[i];
         row.appendChild(newCell);
@@ -88,7 +90,13 @@ function fillU(){
 
 // Fill all cells
 function fillAll(){
-    alert("Clicked Fill All"); // Replace this line with your code.
+    for(let i = 0; i < numRows; i++){
+        for(let j = 0; j < numCols; j++){
+            let cell = document.querySelector(`[cell = "${j}${i}"]`);
+            cell.style.backgroundColor = colorSelected;
+            cell.setAttribute('colored', true)
+        }
+    }
 }
 
 // Clear all cells
