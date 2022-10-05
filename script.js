@@ -16,7 +16,7 @@ function addR() {
         // newCell.setAttribute('y', `${numRows}`);
         // newCell.setAttribute('x', `${i}`);
         newCell.setAttribute('cell', `${i}${numRows}`);
-        newCell.setAttribute('colored', false);
+        newCell.setAttribute('colored', 'false');
         newRow.appendChild(newCell);
     }
     document.querySelector('table').appendChild(newRow); 
@@ -34,7 +34,7 @@ function addC() {
         // newCell.setAttribute('y', `${i}`);
         // newCell.setAttribute('x', `${numCols}`);
         newCell.setAttribute('cell', `${numCols}${i}`);
-        newCell.setAttribute('colored', false);
+        newCell.setAttribute('colored', 'false');
         let row = rows[i];
         row.appendChild(newCell);
     }
@@ -85,7 +85,18 @@ function selectColor(){
 
 // Fill all uncolored cells
 function fillU(){
-    alert("Clicked Fill All Uncolored"); // Replace this line with your code.
+    for(let i = 0; i < numRows; i++){
+        for(let j = 0; j < numCols; j++){
+            let cell = document.querySelector(`[cell = "${j}${i}"]`);
+            let colored = cell.getAttribute('colored');
+            if(colored === 'true'){
+                console.log(colored);
+                continue;
+            }
+            cell.style.backgroundColor = colorSelected;
+            cell.setAttribute('colored', 'true')
+        }
+    }
 }
 
 // Fill all cells
@@ -94,7 +105,7 @@ function fillAll(){
         for(let j = 0; j < numCols; j++){
             let cell = document.querySelector(`[cell = "${j}${i}"]`);
             cell.style.backgroundColor = colorSelected;
-            cell.setAttribute('colored', true)
+            cell.setAttribute('colored', 'true')
         }
     }
 }
@@ -105,7 +116,7 @@ function clearAll(){
         for(let j = 0; j < numCols; j++){
             let cell = document.querySelector(`[cell = "${j}${i}"]`);
             cell.style.backgroundColor = 'white';
-            cell.setAttribute('colored', false);
+            cell.setAttribute('colored', 'false');
         }
     }
 }
