@@ -5,30 +5,41 @@ let colorSelected;
 
 // Add a row
 function addR() {
+    if(numRows === 0){
+        numCols = 1;
+    }
     let newRow = document.createElement('tr');
     let newCell = document.createElement('td');
     newRow.setAttribute('id', `row ${numRows}`);
-    for(let i = 0; i < numCols + 1; i++){
+    for(let i = 0; i < numCols; i++){
         let newCell = document.createElement('td');
         newCell.setAttribute('y', `${numRows}`);
         newCell.setAttribute('x', `${i}`);
+        newCell.setAttribute('colored', false);
         newRow.appendChild(newCell);
     }
     document.querySelector('table').appendChild(newRow); 
     numRows++;
+    
+    console.log(`numRows: ${numRows}`);
+    console.log(`numCols ${numCols}`);
 }
 
 // Add a column
 function addC() { 
-    let row = document.querySelectorAll('tr');
+    let rows = document.querySelectorAll('tr');
     for(let i = 0; i < numRows; i++){
         let newCell = document.createElement('td');
         newCell.setAttribute('y', `${i}`);
-        newCell.setAttribute('x', `${numCols + 1}`);
-        let row = document.getElementById(`row ${i}`);
+        newCell.setAttribute('x', `${numCols}`);
+        newCell.setAttribute('colored', false);
+        let row = rows[i];
         row.appendChild(newCell);
     }
     numCols++;
+    
+    console.log(`numRows: ${numRows}`);
+    console.log(`numCols ${numCols}`);
 }
 
 // Remove a row
@@ -40,6 +51,8 @@ function removeR() {
     if(numRows === 0){
         numCols = 0;
     }
+    console.log(`numRows: ${numRows}`);
+    console.log(`numCols ${numCols}`);
 }
 
 // Remove a column
@@ -51,6 +64,11 @@ function removeC() {
         row.removeChild(lastCol);
     }
     numCols--;
+    if(numCols === 0){
+        numRows = 0;
+    }
+    console.log(`numRows: ${numRows}`);
+    console.log(`numCols ${numCols}`);
 }
 
 // Set global variable for selected color
